@@ -29,6 +29,7 @@ DEFAULTS = {
     'TOKEN_TYPE_CLAIM': 'token_type',
 
     'JTI_CLAIM': 'jti',
+    'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
 
     'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
@@ -37,6 +38,7 @@ DEFAULTS = {
 
 IMPORT_STRINGS = (
     'AUTH_TOKEN_CLASSES',
+    'TOKEN_USER_CLASS',
 )
 
 REMOVED_SETTINGS = (
@@ -49,7 +51,7 @@ REMOVED_SETTINGS = (
 
 class APISettings(_APISettings):  # pragma: no cover
     def __check_user_settings(self, user_settings):
-        SETTINGS_DOC = 'https://github.com/davesque/django-rest-framework-simplejwt#settings'
+        SETTINGS_DOC = 'https://github.com/SimpleJWT/django-rest-framework-simplejwt#settings'
 
         for setting in REMOVED_SETTINGS:
             if setting in user_settings:
